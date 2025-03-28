@@ -16,5 +16,5 @@
     name="rviz"
     pkg="rviz"
     type="rviz"
-    args="-d $(find description_omni_robot)/rviz/omni_rviz.rviz" />
+    args="-d $(find description_omni_robot)/rviz/robot_omni_rviz.rviz" />
 </launch>
