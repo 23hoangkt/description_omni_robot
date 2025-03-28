@@ -8,6 +8,9 @@
         <arg name="debug" value="false"/>
     </include>
 
+    <include file="$(find description_omni_robot)/launch/display.launch"/>
+
+
     <param name="robot_description" command="$(find xacro)/xacro '$(find description_omni_robot)/urdf/description_omni_robot.urdf'" />
 
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
@@ -18,5 +21,5 @@
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" 
           args="joint_state_controller arm_1_joint_controller arm_2_joint_controller" />
     
-    <node name="arm_controller" pkg="description_omni_robot" type="arm_control.py" output="screen"/>
+    <!-- <node name="arm_controller" pkg="description_omni_robot" type="arm_control.py" output="screen"/> -->
 </launch>
