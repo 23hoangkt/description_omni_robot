@@ -1,4 +1,4 @@
-# omni robot 4 wheel with gazebo 
+# Omni robot 4 wheel with gazebo 
 # khởi động gazebo
 
 ```roslaunch description_omni_robot gazebo.launch```
