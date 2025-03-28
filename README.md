@@ -2,7 +2,8 @@
 # Khởi động gazebo cùng rviz
 
 ```roslaunch description_omni_robot gazebo.launch```
-
+# Cấp quyền truy cập cho các file để rosrun 
+``chmod +x "file_name"```
 # Điều khiển bánh xe thông qua teleop_keyboard
 
 ```rosrun description_omni_robot controlKeyboard.py```
