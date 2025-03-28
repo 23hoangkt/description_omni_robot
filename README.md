@@ -14,6 +14,6 @@
 
 # Hiển thị encoder 
 
-```rosrun description display_encoders.py```
+```rosrun description_omni_robot display_encoders.py```
 
 
