@@ -1,5 +1,5 @@
 # Omni robot 4 wheel with gazebo 
-# khởi động gazebo
+# Khởi động gazebo cùng rviz
 
 ```roslaunch description_omni_robot gazebo.launch```
 
