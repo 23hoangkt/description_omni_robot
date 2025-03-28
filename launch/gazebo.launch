@@ -1,0 +1,22 @@
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find description_omni_robot)/worlds/empty.world"/>
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/> <!-- Sửa thành true -->
+        <arg name="gui" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+    </include>
+
+    <param name="robot_description" command="$(find xacro)/xacro '$(find description_omni_robot)/urdf/description_omni_robot.urdf'" />
+
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" 
+          args="-urdf -model omni_robot -z 0.042 -param robot_description"/>
+
+    <rosparam file="$(find description_omni_robot)/config/omni_controllers.yaml" command="load"/>
+
+    <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" 
+          args="joint_state_controller arm_1_joint_controller arm_2_joint_controller" />
+    
+    <node name="arm_controller" pkg="description_omni_robot" type="arm_control.py" output="screen"/>
+</launch>
