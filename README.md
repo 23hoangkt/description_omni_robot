@@ -49,8 +49,8 @@ rosrun description_omni_robot display_encoders.py
 ```
 
 ---
-![Robot Omni 4 Bánh](run/gazebo.png)
+![Robot Omni 4 Bánh](image/run.png)
 
 ---
-**Chúc bạn mô phỏng thành công! 🚀**
+
 
