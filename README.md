@@ -3,6 +3,7 @@
 ## Tổng Quan
 Dự án này mô phỏng một robot omni-directional 4 bánh trong môi trường **Gazebo**, tích hợp với **RViz** để trực quan hóa. Robot có thể được điều khiển thông qua bàn phím, bao gồm cả chuyển động của bánh xe và tay máy (*robotic arm*). Ngoài ra, hệ thống cũng hỗ trợ hiển thị dữ liệu từ **encoder**.
 
+
 ## Yêu Cầu Cần Thiết
 - **ROS Noetic** (hoặc phiên bản ROS tương thích)
 - **Gazebo** (phiên bản hỗ trợ ROS)
@@ -21,6 +22,9 @@ source devel/setup.bash
 ```bash
 roslaunch description_omni_robot gazebo.launch
 ```
+## Hình Ảnh Mô Phỏng
+![Robot Omni 4 Bánh](image/gazebo.png)
+![Robot Omni 4 Bánh](image/rviz.png)
 
 ### 2. Cấp quyền thực thi cho các file điều khiển
 ```bash
@@ -45,11 +49,7 @@ rosrun description_omni_robot display_encoders.py
 ```
 
 ---
-
-## Ghi Chú
-- Đảm bảo rằng các package và dependency cần thiết đã được cài đặt đầy đủ.
-- Nếu gặp lỗi liên quan đến quyền thực thi, hãy kiểm tra lại với `ls -l` và cấp quyền bằng `chmod`.
-- Nếu có lỗi khi chạy `rosrun`, hãy kiểm tra xem `ROS_PACKAGE_PATH` đã được thiết lập đúng hay chưa.
+![Robot Omni 4 Bánh](run/gazebo.png)
 
 ---
 **Chúc bạn mô phỏng thành công! 🚀**
