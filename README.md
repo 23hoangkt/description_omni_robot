@@ -1,56 +1,103 @@
-# Mô Phỏng Robot Omni 4 Bánh với Gazebo và RViz
+Diff Drive Robot
+Đây là dự án mô phỏng robot điều khiển vi sai (differential drive robot) sử dụng ROS Noetic và Gazebo. Dự án bao gồm các gói con để mô phỏng robot trong các tình huống như điều hướng, lập bản đồ SLAM và theo dõi con người. Robot có thể được điều khiển thông qua bàn phím hoặc các lệnh ROS, hỗ trợ các tác vụ như điều hướng và lập bản đồ.
 
-## Tổng Quan
-Dự án này mô phỏng một robot omni-directional 4 bánh trong môi trường **Gazebo**, tích hợp với **RViz** để trực quan hóa. Robot có thể được điều khiển thông qua bàn phím, bao gồm cả chuyển động của bánh xe và tay máy (*robotic arm*). Ngoài ra, hệ thống cũng hỗ trợ hiển thị dữ liệu từ **encoder**.
+Yêu cầu
+
+Ubuntu 20.04
+ROS Noetic
+Python 3.8+ (yêu cầu cho ultralytics)
 
 
-## Yêu Cầu Cần Thiết
-- **ROS Noetic** (hoặc phiên bản ROS tương thích)
-- **Gazebo** (phiên bản hỗ trợ ROS)
-- **RViz**
+Cài đặt và chạy dự án
 
-Trước khi chạy, hãy đảm bảo bạn đã *source* không gian làm việc ROS:
+Tạo và cấu hình không gian làm việc Catkin:
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/src
 
-```bash
+
+Sao chép repository:
+git clone https://github.com/23hoangkt/Diff_drive_robot.git
+
+
+Cài đặt các gói phụ thuộc:
+cd ~/catkin_ws
+rosdep install --from-paths src --ignore-src -r -y
+
+
+Biên dịch không gian làm việc:
+catkin_make
 source devel/setup.bash
-```
 
----
 
-## Hướng Dẫn Sử Dụng
-### 1. Khởi động Gazebo cùng RViz
+Cài đặt các gói ROS bổ sung:
+sudo apt update
+sudo apt install ros-noetic-vision-msgs ros-noetic-hector-slam ros-noetic-slam-karto
+pip3 install ultralytics
+
+
+
+
+Khởi chạy dự án
+1. Khởi động Gazebo với robot (gói boe_bot):
 ```bash
-roslaunch description_omni_robot gazebo.launch
+roslaunch boe_bot gazebo.launch
 ```
-## Hình Ảnh Mô Phỏng
-![Robot Omni 4 Bánh](image/gazebo.png)
-![Robot Omni 4 Bánh](image/rviz.png)
+![Gazebo with robot](https://raw.githubusercontent.com/23hoangkt/Diff_drive_robot/main/result/robot.png)
 
-### 2. Cấp quyền thực thi cho các file điều khiển
+2. Khởi động SLAM với Hector SLAM (gói boe_bot_slam):
 ```bash
-chmod +x controlKeyboard.py
-chmod +x arm_control.py
-chmod +x display_encoders.py
+roslaunch boe_bot_slam boe_bot_hector_slam.launch world_name:="turtlebot3_world.world"
 ```
+![SLAM](https://raw.githubusercontent.com/23hoangkt/Diff_drive_robot/main/result/slam.png)
 
-### 3. Điều khiển bánh xe thông qua bàn phím
+3. Điều khiển robot để quét bản đồ:
 ```bash
-rosrun description_omni_robot controlKeyboard.py
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 
-### 4. Điều khiển tay máy (*robotic arm*)
+4. Lưu bản đồ:
 ```bash
-rosrun description_omni_robot arm_control.py
+rosrun map_server map_saver -f my_map
 ```
 
-### 5. Hiển thị dữ liệu từ encoder
+5. Điều hướng (gói boe_bot_navigation):
 ```bash
-rosrun description_omni_robot display_encoders.py
+roslaunch boe_bot_navigation navigation.launch
 ```
+![Navigation](https://raw.githubusercontent.com/23hoangkt/Diff_drive_robot/main/result/navigation.png)
 
----
-![Robot Omni 4 Bánh](image/run.png)
+6. Theo dõi con người (gói boe_bot_human_tracking):
+```bash
+roslaunch boe_bot_human_tracking human_tracker.launch
+```
+![Human tracking](https://raw.githubusercontent.com/23hoangkt/Diff_drive_robot/main/result/human_follow.png)
 
----
 
+Cấu trúc thư mục
+
+boe_bot/: Mô phỏng robot trong Gazebo.
+boe_bot_slam/: Gói cho SLAM (Hector SLAM, Karto SLAM).
+boe_bot_navigation/: Gói cho điều hướng.
+boe_bot_human_tracking/: Gói cho theo dõi con người.
+result/: Chứa ảnh minh họa cho README.
+
+
+Giấy phép
+Dự án này sử dụng giấy phép MIT.Xem file LICENSE để biết thêm chi tiết.
+
+Đóng góp
+Mọi đóng góp đều được hoan nghênh! Bạn có thể:
+
+Tạo pull request
+Báo lỗi (issues)
+Cải tiến tài liệu hoặc tính năng mới
+
+
+Liên hệ
+Nếu bạn có câu hỏi, vui lòng liên hệ qua GitHub hoặc email trong phần thông tin tài khoản.
+
+Lưu ý: Nếu ảnh không hiển thị, kiểm tra:
+
+Đảm bảo bạn đang xem branch đúng (master hoặc branch mặc định).
+Làm mới trang hoặc thử mở trong chế độ ẩn danh.
 
