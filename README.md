@@ -46,6 +46,7 @@ rosrun description_omni_robot display_encoders.py
 ```
 ### 6. Result
 ![Gazebo with robot](image/run.png)
+[Watch a demo of Result](https://www.youtube.com/watch?v=LrhyjzxlZuc)
 
 ---
 
