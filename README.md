@@ -4,9 +4,8 @@
 Dự án này mô phỏng một robot omni-directional 4 bánh trong môi trường **Gazebo**, tích hợp với **RViz** để trực quan hóa. Robot có thể được điều khiển thông qua bàn phím, bao gồm cả chuyển động của bánh xe và tay máy (*robotic arm*). Ngoài ra, hệ thống cũng hỗ trợ hiển thị dữ liệu từ **encoder**.
 
 ## Yêu Cầu Cần Thiết
-- **ROS Noetic** (hoặc phiên bản ROS tương thích)
-- **Gazebo** (phiên bản hỗ trợ ROS)
-- **RViz**
+- **ROS Noetic**
+- Ubuntu 20.04
 
 Trước khi chạy, hãy đảm bảo bạn đã *source* không gian làm việc ROS:
 
