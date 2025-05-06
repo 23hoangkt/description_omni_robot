@@ -21,6 +21,8 @@ source devel/setup.bash
 ```bash
 roslaunch description_omni_robot gazebo.launch
 ```
+![Gazebo with robot](image/gazebo.png)
+![Gazebo with robot](image/rviz.png)
 
 ### 2. Cấp quyền thực thi cho các file điều khiển
 ```bash
@@ -43,6 +45,8 @@ rosrun description_omni_robot arm_control.py
 ```bash
 rosrun description_omni_robot display_encoders.py
 ```
+### 6. Result
+![Gazebo with robot](image/run.png)
 
 ---
 
